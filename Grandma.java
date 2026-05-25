@@ -59,39 +59,34 @@ public class Grandma extends Actor
     
     public void act()
     {
-<<<<<<< Updated upstream
-        /**
-        if(Greenfoot.isKeyDown("left")){
-=======
         boolean moving = false;
-        
+    
         if(Greenfoot.isKeyDown("left"))
         {
->>>>>>> Stashed changes
             setLocation(getX() - 3, getY());
             facing = "left";
             moving = true;
         }
-        
+    
         if(Greenfoot.isKeyDown("right"))
         {
             setLocation(getX() + 3, getY());
             facing = "right";
             moving = true;
         }
-        
+    
         if(Greenfoot.isKeyDown("up"))
         {
             setLocation(getX(), getY() - 3);
             moving = true;
         }
-        
+    
         if(Greenfoot.isKeyDown("down"))
         {
             setLocation(getX(), getY() + 3);
             moving = true;
         }
-        
+    
         if(moving)
         {
             animateGrandma();
@@ -107,6 +102,5 @@ public class Grandma extends Actor
                 setImage(grandmaLeft[0]);
             }
         }
-        */
     }
 }
