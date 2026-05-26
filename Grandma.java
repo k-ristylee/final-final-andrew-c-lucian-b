@@ -17,6 +17,8 @@ public class Grandma extends Actor
     
     int imageIndex = 0;
     
+    private int speed = 2; 
+
     public Grandma()
     {
         for(int i = 0; i < grandmaRight.length; i++)
@@ -35,7 +37,48 @@ public class Grandma extends Actor
         setImage(grandmaRight[0]);
         animationTimer.mark();
     }
-    
+
+    public void act()
+    {
+        chaseFly();
+        animateGrandma();
+    }
+
+    private void chaseFly()
+    {
+        Fly fly = (Fly) getWorld().getObjects(Fly.class).get(0);
+
+        int dx = fly.getX() - getX();
+        int dy = fly.getY() - getY();
+
+        if (Math.abs(dx) > Math.abs(dy))
+        {
+            // horizontal movement is stronger
+            if (dx > 0)
+            {
+                setLocation(getX() + speed, getY());
+                facing = "right";
+            }
+            else
+            {
+                setLocation(getX() - speed, getY());
+                facing = "left";
+            }
+        }
+        else
+        {
+            // vertical movement
+            if (dy > 0)
+            {
+                setLocation(getX(), getY() + speed);
+            }
+            else
+            {
+                setLocation(getX(), getY() - speed);
+            }
+        }
+    }
+
     public void animateGrandma()
     {
         if(animationTimer.millisElapsed() < 120)
@@ -55,52 +98,5 @@ public class Grandma extends Actor
         }
         
         imageIndex = (imageIndex + 1) % grandmaRight.length;
-    }
-    
-    public void act()
-    {
-        boolean moving = false;
-    
-        if(Greenfoot.isKeyDown("left"))
-        {
-            setLocation(getX() - 3, getY());
-            facing = "left";
-            moving = true;
-        }
-    
-        if(Greenfoot.isKeyDown("right"))
-        {
-            setLocation(getX() + 3, getY());
-            facing = "right";
-            moving = true;
-        }
-    
-        if(Greenfoot.isKeyDown("up"))
-        {
-            setLocation(getX(), getY() - 3);
-            moving = true;
-        }
-    
-        if(Greenfoot.isKeyDown("down"))
-        {
-            setLocation(getX(), getY() + 3);
-            moving = true;
-        }
-    
-        if(moving)
-        {
-            animateGrandma();
-        }
-        else
-        {
-            if(facing.equals("right"))
-            {
-                setImage(grandmaRight[0]);
-            }
-            else
-            {
-                setImage(grandmaLeft[0]);
-            }
-        }
     }
 }
