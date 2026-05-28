@@ -26,8 +26,8 @@ public class Fly extends Actor
 
     public void act()
     {
-        checkCatch();
         moveFly();
+        checkCatch();
     }
 
     private void checkCatch()
@@ -36,12 +36,7 @@ public class Fly extends Actor
         {
             Grandma g = (Grandma) getOneIntersectingObject(Grandma.class);
             if (g == null) return;
-    
-            int cx = (getX() + g.getX()) / 2;
-            int cy = (getY() + g.getY()) / 2;
-    
-            getWorld().addObject(new FightCloud(), cx, cy);
-    
+
             getWorld().removeObject(g);
             getWorld().removeObject(this);
         }
@@ -87,6 +82,8 @@ public class Fly extends Actor
         {
             setImage(flyRight[0]);
         }
+        
+        
     }
 
     private void animateVertical()

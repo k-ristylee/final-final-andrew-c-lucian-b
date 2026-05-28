@@ -17,6 +17,7 @@ public class Grandma extends Actor
     int imageIndex = 0;
 
     private int speed = 2;
+    private int throwCooldown = 0;
 
     public Grandma()
     {
@@ -38,6 +39,7 @@ public class Grandma extends Actor
     {
         chaseFly();
         animateGrandma();
+        throwShoe();
     }
 
     private void chaseFly()
@@ -69,6 +71,32 @@ public class Grandma extends Actor
             else
                 setLocation(getX(), getY() - speed);
         }
+    }
+
+    private void throwShoe()
+    {
+        if (throwCooldown > 0)
+        {
+            throwCooldown--;
+            return;
+        }
+
+        if (getWorld().getObjects(Fly.class).isEmpty()) return;
+
+        Fly fly = getWorld().getObjects(Fly.class).get(0);
+
+        int dx = fly.getX() - getX();
+        int dy = fly.getY() - getY();
+
+        double length = Math.sqrt(dx * dx + dy * dy);
+        if (length == 0) return;
+
+        int dirX = (int)Math.round(dx / length);
+        int dirY = (int)Math.round(dy / length);
+
+        getWorld().addObject(new Shoe(dirX, dirY), getX(), getY());
+
+        throwCooldown = 60;
     }
 
     private void animateGrandma()

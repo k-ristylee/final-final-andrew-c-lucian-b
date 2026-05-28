@@ -6,7 +6,6 @@ import greenfoot.*; // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @Lucian and Andrew
  * @May 20, 2026
  */
-
 public class MyWorld extends World
 {
     public MyWorld()
