@@ -11,6 +11,6 @@ public class Cake extends Actor
     public Cake()
     {
         setImage("cake.png");
-        getImage().scale(60, 60);
+        getImage().scale(50, 50);
     }
 }

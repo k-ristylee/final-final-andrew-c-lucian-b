@@ -175,8 +175,8 @@ public class Fly extends Actor
             flyRight[i] = new GreenfootImage("fly_move/fly_horizontal" + (i + 1) + ".png");
             flyVertical[i] = new GreenfootImage("fly_move/fly_vertical" + (i + 1) + ".png");
 
-            flyRight[i].scale(flyRight[i].getWidth() / 3, flyRight[i].getHeight() / 3);
-            flyVertical[i].scale(flyVertical[i].getWidth() / 3, flyVertical[i].getHeight() / 3);
+            flyRight[i].scale(flyRight[i].getWidth() / 5, flyRight[i].getHeight() / 5);
+            flyVertical[i].scale(flyVertical[i].getWidth() / 5, flyVertical[i].getHeight() / 5);
         }
     }
 

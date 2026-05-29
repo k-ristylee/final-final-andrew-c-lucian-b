@@ -25,11 +25,11 @@ public class Grandma extends Actor
         for (int i = 0; i < grandmaRight.length; i++)
         {
             grandmaRight[i] = new GreenfootImage("grandma_walk/grandma_walk" + (i + 1) + ".png");
-            grandmaRight[i].scale(150, 150);
+            grandmaRight[i].scale(125, 125);
 
             grandmaLeft[i] = new GreenfootImage("grandma_walk/grandma_walk" + (i + 1) + ".png");
             grandmaLeft[i].mirrorHorizontally();
-            grandmaLeft[i].scale(150, 150);
+            grandmaLeft[i].scale(125, 125);
         }
 
         setImage(grandmaRight[0]);
