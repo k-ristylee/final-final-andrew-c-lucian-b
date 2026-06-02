@@ -18,6 +18,7 @@ public class MyWorld extends World
     public MyWorld()
     {
         super(900, 600, 1, false);
+        setBackground("background.png");
 
         grandma = new Grandma();
         addObject(grandma, 200, 200);
