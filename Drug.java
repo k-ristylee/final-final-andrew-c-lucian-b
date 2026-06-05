@@ -12,7 +12,7 @@ public class Drug extends Actor
         setImage("drugs.png");
         getImage().scale(75, 75);
 
-        double speed = 4.5;
+        double speed = 6;
 
         this.dx = dx * speed;
         this.dy = dy * speed;

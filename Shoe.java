@@ -18,7 +18,7 @@ public class Shoe extends Actor
         setImage("shoe.png");
         getImage().scale(40, 40);
 
-        double speed = 4;
+        double speed = 5;
 
         dx = dirX * speed;
         dy = dirY * speed;
