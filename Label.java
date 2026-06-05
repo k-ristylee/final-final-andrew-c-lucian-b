@@ -1,6 +1,6 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
-
+//game counter
 /**
  * A Label class that allows you to display a textual value on screen.
  * 
