@@ -42,16 +42,12 @@ public class MyWorld extends World
     {
         collected++;
 
-        if (collected >= 5 && level == 1)
-        {
-            level = 2;
-            grandma.setLevel(2);
-        }
+        int newLevel = (collected / 5) + 1;
 
-        if (collected >= 10 && level == 2)
+        if (newLevel > level)
         {
-            level = 3;
-            grandma.setLevel(3);
+            level = newLevel;
+            grandma.setLevel(level);
         }
 
         spawnItem();

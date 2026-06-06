@@ -34,6 +34,11 @@ public class Fly extends Actor
 
     public void act()
     {
+        if (getWorld() == null)
+        {
+            return;
+        }
+
         if (invulnerabilityTimer > 0)
         {
             invulnerabilityTimer--;
@@ -110,20 +115,10 @@ public class Fly extends Actor
         int healthWidth = (health * barWidth) / maxHealth;
 
         img.setColor(Color.RED);
-        img.fillRect(
-            (img.getWidth() - barWidth) / 2,
-            0,
-            barWidth,
-            barHeight
-        );
+        img.fillRect((img.getWidth() - barWidth) / 2, 0, barWidth, barHeight);
 
         img.setColor(Color.GREEN);
-        img.fillRect(
-            (img.getWidth() - barWidth) / 2,
-            0,
-            healthWidth,
-            barHeight
-        );
+        img.fillRect((img.getWidth() - barWidth) / 2, 0, healthWidth, barHeight);
 
         setImage(img);
     }
@@ -165,8 +160,7 @@ public class Fly extends Actor
             if (heart != null)
             {
                 world.removeObject(heart);
-
-                heal(20);
+                heal(25);
 
                 MyWorld myWorld = (MyWorld) world;
                 myWorld.itemCollected();
@@ -259,15 +253,8 @@ public class Fly extends Actor
             flyRight[i] = new GreenfootImage("fly_move/fly_horizontal" + (i + 1) + ".png");
             flyVertical[i] = new GreenfootImage("fly_move/fly_vertical" + (i + 1) + ".png");
 
-            flyRight[i].scale(
-                flyRight[i].getWidth() / 5,
-                flyRight[i].getHeight() / 5
-            );
-
-            flyVertical[i].scale(
-                flyVertical[i].getWidth() / 5,
-                flyVertical[i].getHeight() / 5
-            );
+            flyRight[i].scale(flyRight[i].getWidth() / 5, flyRight[i].getHeight() / 5);
+            flyVertical[i].scale(flyVertical[i].getWidth() / 5, flyVertical[i].getHeight() / 5);
         }
     }
 
@@ -279,9 +266,7 @@ public class Fly extends Actor
         {
             imageIndex = (imageIndex + 1) % flyVertical.length;
 
-            GreenfootImage img = new GreenfootImage(
-                flyVertical[imageIndex]
-            );
+            GreenfootImage img = new GreenfootImage(flyVertical[imageIndex]);
 
             if (facingDown)
             {
@@ -300,9 +285,7 @@ public class Fly extends Actor
         {
             imageIndex = (imageIndex + 1) % flyRight.length;
 
-            GreenfootImage img = new GreenfootImage(
-                flyRight[imageIndex]
-            );
+            GreenfootImage img = new GreenfootImage(flyRight[imageIndex]);
 
             if (!facingRight)
             {

@@ -40,11 +40,6 @@ public class Grandma extends Actor
 
     public void act()
     {
-        if (getWorld() == null)
-        {
-            return;
-        }
-
         chaseFly();
         throwProjectile();
         animateGrandma();
@@ -54,30 +49,20 @@ public class Grandma extends Actor
     public void setLevel(int level)
     {
         this.level = level;
-
-        if (level == 2)
-        {
-            speed = 1;
-            throwDelay = 100;
-        }
-
-        if (level == 3)
-        {
-            speed = 2;
-            throwDelay = 70;
-        }
+    
+        speed = Math.min(3, 1 + (level - 1) / 3);
+    
+        throwDelay = Math.max(40, 120 - (level - 1) * 15);
     }
 
     private void chaseFly()
     {
-        java.util.List<Fly> flies = getWorld().getObjects(Fly.class);
-
-        if (flies.isEmpty())
+        if (getWorld().getObjects(Fly.class).isEmpty())
         {
             return;
         }
 
-        Fly fly = flies.get(0);
+        Fly fly = (Fly)getWorld().getObjects(Fly.class).get(0);
 
         int dx = fly.getX() - getX();
         int dy = fly.getY() - getY();
@@ -115,43 +100,58 @@ public class Grandma extends Actor
             throwCooldown--;
             return;
         }
-    
-        java.util.List<Fly> flies = getWorld().getObjects(Fly.class);
-    
-        if (flies.isEmpty())
+
+        if (getWorld().getObjects(Fly.class).isEmpty())
         {
             return;
         }
-    
-        Fly fly = flies.get(0);
-    
+
+        Fly fly = (Fly)getWorld().getObjects(Fly.class).get(0);
+
         double dx = fly.getX() - getX();
         double dy = fly.getY() - getY();
-    
+
         double length = Math.sqrt(dx * dx + dy * dy);
-    
+
         if (length == 0)
         {
             return;
         }
-    
+
         double dirX = dx / length;
         double dirY = dy / length;
-    
+
         if (level == 1)
         {
-            getWorld().addObject(new Shoe(dirX, dirY), getX(), getY());
+            Projectile proj = new Projectile(dirX, dirY, "shoe", 20, 4);
+            proj.setScale(40);
+            getWorld().addObject(proj, getX(), getY());
         }
         else if (level == 2)
         {
-            getWorld().addObject(new Drug(dirX, dirY), getX(), getY());
+            Projectile proj = new Projectile(dirX, dirY, "yarn", 35, 4);
+            proj.setScale(55);
+            getWorld().addObject(proj, getX(), getY());
         }
         else if (level == 3)
         {
-            // still drug for now, just faster throwing handled elsewhere
-            getWorld().addObject(new Drug(dirX, dirY), getX(), getY());
+            Projectile proj = new Projectile(dirX, dirY, "comb", 50, 5);
+            proj.setScale(65);
+            getWorld().addObject(proj, getX(), getY());
         }
-    
+        else if (level == 4)
+        {
+            Projectile proj = new Projectile(dirX, dirY, "drugs", 65, 5);
+            proj.setScale(80);
+            getWorld().addObject(proj, getX(), getY());
+        }
+        else
+        {
+            Projectile proj = new Projectile(dirX, dirY, "purse", 80, 6);
+            proj.setScale(95);
+            getWorld().addObject(proj, getX(), getY());
+        }
+
         throwCooldown = throwDelay;
     }
 
