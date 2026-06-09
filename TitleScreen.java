@@ -25,8 +25,9 @@ public class TitleScreen extends World
         // Check if the spacebar is pressed
         if (Greenfoot.isKeyDown("space"))
         {
-            // Change "MyGameWorld" to the exact name of your actual gameplay World class
-            Greenfoot.setWorld(new MyWorld());
+        // Instead of loading the game world, load the instruction screen first
+            Greenfoot.setWorld(new InstructionScreen());
         }
+        
     }
 }
