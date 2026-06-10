@@ -13,6 +13,8 @@ public class MyWorld extends World
     private int collected = 0;
     private int level = 1;
 
+    private static int highScore = 0;
+
     private Grandma grandma;
 
     public MyWorld()
@@ -41,6 +43,11 @@ public class MyWorld extends World
     public void itemCollected()
     {
         collected++;
+
+        if (collected > highScore)
+        {
+            highScore = collected;
+        }
 
         int newLevel = (collected / 5) + 1;
 
@@ -73,8 +80,9 @@ public class MyWorld extends World
 
     private void updateHUD()
     {
-        showText("Collected: " + collected, 100, 30);
+        showText("Collected: " + collected, 98, 30);
         showText("Level: " + level, 80, 60);
+        showText("High Score: " + highScore, 105, 90);
     }
 
     private void checkGameOver()
@@ -82,8 +90,6 @@ public class MyWorld extends World
         if (getObjects(Fly.class).isEmpty())
         {
             gameOver = true;
-        
-            // Switch to the custom DeathScreen world
             Greenfoot.setWorld(new DeathScreen());
         }
     }
