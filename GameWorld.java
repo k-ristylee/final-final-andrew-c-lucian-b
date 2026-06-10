@@ -71,16 +71,19 @@ public class GameWorld extends World
 
         int chance = Greenfoot.getRandomNumber(100);
 
-        if (chance < 70)
+        if (chance < 65)
         {
+            // 65% Chance (Numbers 0 to 64)
             addObject(new Cake(), x, y);
         }
         else if (chance < 90)
         {
+            // 25% Chance (Numbers 65 to 89)
             addObject(new Heart(), x, y);
         }
         else
         {
+            // 10% Chance (Numbers 90 to 99)
             addObject(new Frozen(), x, y);
         }
     }

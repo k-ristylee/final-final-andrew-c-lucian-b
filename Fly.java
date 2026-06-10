@@ -10,8 +10,8 @@ public class Fly extends Actor
 {
     private int speed = 5;
 
-    private int health = 100;
-    private int maxHealth = 100;
+    private int health = 150;
+    private int maxHealth = 150;
     private int invulnerabilityTimer = 0;
 
     private GreenfootImage[] flyRight;
