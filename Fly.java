@@ -144,8 +144,8 @@ public class Fly extends Actor
             {
                 world.removeObject(cake);
 
-                MyWorld myWorld = (MyWorld) world;
-                myWorld.itemCollected();
+                GameWorld GameWorld = (GameWorld) world;
+                GameWorld.itemCollected();
             }
         }
 
@@ -158,8 +158,8 @@ public class Fly extends Actor
                 world.removeObject(heart);
                 heal(25);
 
-                MyWorld myWorld = (MyWorld) world;
-                myWorld.itemCollected();
+                GameWorld GameWorld = (GameWorld) world;
+                GameWorld.itemCollected();
             }
         }
 
@@ -171,8 +171,8 @@ public class Fly extends Actor
             {
                 world.removeObject(frozen);
 
-                MyWorld myWorld = (MyWorld) world;
-                myWorld.itemCollected();
+                GameWorld GameWorld = (GameWorld) world;
+                GameWorld.itemCollected();
 
                 Grandma grandma = (Grandma) world.getObjects(Grandma.class).get(0);
                 grandma.freeze(3);

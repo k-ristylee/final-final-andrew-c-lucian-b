@@ -6,8 +6,10 @@ import greenfoot.*; // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @Lucian and Andrew
  * @May 20, 2026
  */
-public class MyWorld extends World
+
+public class GameWorld extends World
 {
+    //define instance variables
     private boolean gameOver = false;
 
     private int collected = 0;
@@ -17,7 +19,8 @@ public class MyWorld extends World
 
     private Grandma grandma;
 
-    public MyWorld()
+    //set up game world
+    public GameWorld()
     {
         super(900, 600, 1, false);
         setBackground("background.png");
@@ -31,7 +34,7 @@ public class MyWorld extends World
         spawnItem();
         updateHUD();
     }
-
+    //runs main game, checks if game is over
     public void act()
     {
         if (!gameOver)
@@ -39,7 +42,7 @@ public class MyWorld extends World
             checkGameOver();
         }
     }
-
+    // checks number of cakes collected, updates high score, updates difficulty
     public void itemCollected()
     {
         collected++;
@@ -60,7 +63,7 @@ public class MyWorld extends World
         spawnItem();
         updateHUD();
     }
-
+    //spawns cakes in at random places
     private void spawnItem()
     {
         int x = Greenfoot.getRandomNumber(getWidth() - 100) + 50;
@@ -81,14 +84,14 @@ public class MyWorld extends World
             addObject(new Frozen(), x, y);
         }
     }
-
+    //updates text at corner of screen
     private void updateHUD()
     {
         showText("Collected: " + collected, 98, 30);
         showText("Level: " + level, 80, 60);
         showText("High Score: " + highScore, 105, 90);
     }
-
+    // checks if the fly has run out of health, sets screen as death screen if true
     private void checkGameOver()
     {
         if (getObjects(Fly.class).isEmpty())

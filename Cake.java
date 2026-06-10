@@ -1,13 +1,14 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class Cake here.
+ * the cake that the fly collects.
  * 
  * @Lucian and Andrew
  * @May 29, 2026
  */
 public class Cake extends Actor
 {
+    //cake image created
     public Cake()
     {
         setImage("cake.png");

@@ -8,6 +8,7 @@ import greenfoot.*;
  */
 public class Frozen extends Actor
 {
+    //creates freeze power up
     public Frozen()
     {
         setImage("frozen.png");

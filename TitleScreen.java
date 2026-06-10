@@ -24,7 +24,7 @@ public class TitleScreen extends World
        
         setBackground(background);
     }
-
+    
     public void act()
     {
         // Check if the spacebar is pressed

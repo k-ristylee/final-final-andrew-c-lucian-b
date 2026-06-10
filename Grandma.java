@@ -1,13 +1,15 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class Grandma here.
+ * Grandma antagonist that chases fly.
  * 
  * @Lucian and Andrew
  * @May 20, 2026
  */
+
 public class Grandma extends Actor
 {
+    //define instance variables
     private GreenfootImage[] grandmaRight = new GreenfootImage[4];
     private GreenfootImage[] grandmaLeft = new GreenfootImage[4];
 
@@ -24,7 +26,6 @@ public class Grandma extends Actor
 
     private boolean frozen = false;
     private int freezeTimer = 0;
-
     public Grandma()
     {
         for (int i = 0; i < grandmaRight.length; i++)
@@ -40,7 +41,7 @@ public class Grandma extends Actor
         setImage(grandmaRight[0]);
         animationTimer.mark();
     }
-
+    //checks if frozen, runs all other methods otherwise
     public void act()
     {
         if (frozen)
@@ -60,7 +61,7 @@ public class Grandma extends Actor
         animateGrandma();
         stayInBounds();
     }
-
+    //increases grandma difficulty depending on level
     public void setLevel(int level)
     {
         this.level = level;
@@ -69,13 +70,13 @@ public class Grandma extends Actor
 
         throwDelay = Math.max(40, 120 - (level - 1) * 15);
     }
-
+    //freezes grandma
     public void freeze(int seconds)
     {
         frozen = true;
         freezeTimer = seconds * 60;
     }
-
+    //Follows fly player around the game world
     private void chaseFly()
     {
         if (getWorld().getObjects(Fly.class).isEmpty())
@@ -113,7 +114,7 @@ public class Grandma extends Actor
             }
         }
     }
-
+    //launches projectile based on level
     private void throwProjectile()
     {
         if (throwCooldown > 0)
@@ -174,7 +175,7 @@ public class Grandma extends Actor
 
         throwCooldown = throwDelay;
     }
-
+    //animate grandma
     private void animateGrandma()
     {
         if (animationTimer.millisElapsed() < 120)
@@ -195,7 +196,7 @@ public class Grandma extends Actor
 
         imageIndex = (imageIndex + 1) % grandmaRight.length;
     }
-
+    //keeps grandma within world
     private void stayInBounds()
     {
         if (getX() < 0)

@@ -8,6 +8,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot)
  */
 public class DeathScreen extends World
 {
+    //scales and set up death screen
     public DeathScreen()
     {    
         super(900, 600, 1); 
@@ -22,7 +23,7 @@ public class DeathScreen extends World
         // If they press space, send them back to the main game world to try again
         if (Greenfoot.isKeyDown("space"))
         {
-            Greenfoot.setWorld(new MyWorld()); 
+            Greenfoot.setWorld(new GameWorld()); 
         }
     }
 }

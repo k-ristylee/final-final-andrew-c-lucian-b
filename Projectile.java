@@ -8,12 +8,13 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Projectile extends Actor
 {
+    //establish instance variables
     private double dx;
     private double dy;
 
     private int damage;
     private int speed;
-
+    
     public Projectile(double dirX, double dirY, String imageName, int damage, int speed)
     {
         this.damage = damage;
