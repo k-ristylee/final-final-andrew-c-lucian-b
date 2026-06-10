@@ -68,11 +68,11 @@ public class MyWorld extends World
 
         int chance = Greenfoot.getRandomNumber(100);
 
-        if (chance < 65)
+        if (chance < 70)
         {
             addObject(new Cake(), x, y);
         }
-        else if (chance < 85)
+        else if (chance < 90)
         {
             addObject(new Heart(), x, y);
         }
