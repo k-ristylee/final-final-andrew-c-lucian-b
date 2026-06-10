@@ -1,13 +1,17 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot)
 
+/**
+ * Instruction screen.
+ * 
+ * @Lucian and Andrew
+ * @June 9, 2026
+ */
 public class DeathScreen extends World
 {
     public DeathScreen()
     {    
-        // Set to your exact 900x600 resolution
         super(900, 600, 1); 
         
-        // Load and scale the game over image to fit perfectly
         GreenfootImage bg = new GreenfootImage("DeathScreen.png");
         bg.scale(900, 600);
         setBackground(bg);
